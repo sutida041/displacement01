@@ -3,27 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physics Scatter Plot</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Displacement Calculator</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>Calculate and plot displacement</h1>
-    <div class="container">
+    <h2>Calculate and plot displacement</h2>
+    
+    <form id="calcForm">
         <div>
-            <form id="inputForm">
-                <label for="u">Initial velocity (u):</label>
-                <input type="number" id="u" name="u" step="any" required><br><br>
-                <label for="a">Acceleration (a):</label>
-                <input type="number" id="a" name="a" step="any" required><br><br>
-                <label for="t">Total time (t):</label>
-                <input type="number" id="t" name="t" step="any" required><br><br>
-                <input type="submit" value="Submit">
-            </form>
+            <label for="u">Initial velocity (u): </label>
+            <input type="number" id="u" value="0" step="any"> m/s
         </div>
         <div>
-            <canvas id="myChart"></canvas>
+            <label for="a">Acceleration (a): </label>
+            <input type="number" id="a" value="1.5" step="any"> m/s<sup>2</sup>
         </div>
+        <div>
+            <label for="t">Total time (t): </label>
+            <input type="number" id="t" value="10" step="any"> s
+        </div>
+        <div>
+            <label for="s">Displacement (s): </label>
+            <input type="text" id="s" readonly> m
+        </div>
+        <div>
+            <label for="interval">Number of samples: </label>
+            <select id="interval">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100" selected>100</option>
+            </select>
+        </div>
+        <br>
+        <button type="button" onclick="calculate()">Calculate</button>
+    </form>
+
+    <div style="width: 80%; max-width: 600px; margin-top: 20px;">
+        <canvas id="myChart"></canvas>
     </div>
 
     <script src="script.js"></script>
